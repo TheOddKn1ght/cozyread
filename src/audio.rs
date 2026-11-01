@@ -11,7 +11,8 @@ pub struct Audio {
 }
 impl Audio {
     pub fn open() -> Result<Self> {
-        let device = DeviceSinkBuilder::open_default_sink()?;
+        let mut device = DeviceSinkBuilder::open_default_sink()?;
+        device.log_on_drop(false);
         let player = Player::connect_new(device.mixer());
         Ok(Self {
             _device: device,
