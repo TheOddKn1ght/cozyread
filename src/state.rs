@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, BTreeSet},
     env, fs,
     io::{self, Write},
     path::{Path, PathBuf},
@@ -10,6 +10,10 @@ use std::{
 pub struct State {
     #[serde(default)]
     pub positions: BTreeMap<PathBuf, f64>,
+    #[serde(default)]
+    pub book_chapters: BTreeMap<PathBuf, PathBuf>,
+    #[serde(default)]
+    pub hidden_books: BTreeSet<PathBuf>,
     #[serde(default)]
     pub last: Option<PathBuf>,
     #[serde(default)]
@@ -29,6 +33,8 @@ impl Default for State {
     fn default() -> Self {
         Self {
             positions: BTreeMap::new(),
+            book_chapters: BTreeMap::new(),
+            hidden_books: BTreeSet::new(),
             last: None,
             library: None,
             speed: default_speed(),

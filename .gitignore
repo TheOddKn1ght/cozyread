@@ -1,1 +1,23 @@
-/target
+# Rust build output and backup files
+/target/
+**/*.rs.bk
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.sample
+/.aws/
+
+# Local agent configuration
+/.agents/
+/.codex/
+
+# Editor and operating system files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
